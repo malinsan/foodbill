@@ -79,7 +79,7 @@ export default function Header() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Food Bill
+            Food Bill Yo
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
