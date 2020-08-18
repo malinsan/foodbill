@@ -7,16 +7,20 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 
 import { Provider } from 'react-redux'
 import store from '../store'
+import { Grid } from '@material-ui/core'
 
 class App extends Component {
     render() {
         return (
             <Provider store={store}> 
-                <>
-                    <CssBaseline />
-                    <Header />
-                    <Dashboard />
-                </>
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <Header />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Dashboard />
+                    </Grid>
+                </Grid>
             </Provider>
         )
     }

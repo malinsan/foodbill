@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { TextField, Grid } from '@material-ui/core'
 
 export class Form extends Component {
     state = {
@@ -8,9 +9,9 @@ export class Form extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Add ingredient</h1>
-            </div>
+            <form>
+                <TextField label='Namn' variant='outlined'></TextField>
+            </form>
         )
     }
 }
