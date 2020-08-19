@@ -1,6 +1,6 @@
 import React from 'react'
 import Ingredients from './Ingredients'
-import Form from './Form'
+import AddIngredientForm from './AddIngredientForm'
 import { Container, Grid } from '@material-ui/core'
 
 export default function Dashboard() {
@@ -8,7 +8,7 @@ export default function Dashboard() {
         <Container>
             <Grid container spacing={5}>
                 <Grid item xs={12}>
-                    <Form />
+                    <AddIngredientForm />
                 </Grid>
                 <Grid item xs={12}>
                     <Ingredients />

@@ -7,6 +7,7 @@ const initialState = {
 export default function(state = initialState, action) {
     switch (action.type) {
         case GET_INGREDIENTS:
+            console.log('hej!')
             return {
                 ...state,
                 ingredients: action.payload
