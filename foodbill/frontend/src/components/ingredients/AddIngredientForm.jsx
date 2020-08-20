@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { TextField, Grid, withStyles, Button, makeStyles } from '@material-ui/core'
 import { Form } from '../general/Form'
 import { useDispatch, connect } from 'react-redux'
-import { getIngredients, deleteIngredient } from '../../actions/ingredients'
+import { addIngredient } from '../../actions/ingredients'
 
 const useStyles = makeStyles(theme => ({
     textField: {
@@ -28,19 +28,14 @@ function _AddIngredientForm(props) {
         { label: 'Färg', index: 'color' }
     ]
 
-    const onClickAction = () => {
-        console.log('tjabba')
-        getIngredients()
-    }
-
     return (
         <Form 
             classes={classes}
             initialState={initialState}
             textFieldValues={ingredientValues}
-            onSubmitAction={onClickAction}
+            onClickAction={props.addIngredient}
         />
     )
 }
 
-export default connect(null, { getIngredients })(_AddIngredientForm)
+export default connect(null, { addIngredient })(_AddIngredientForm)

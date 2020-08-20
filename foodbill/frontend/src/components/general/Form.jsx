@@ -10,6 +10,11 @@ export class Form extends Component {
         this.setState({ ...this.state, [name]: value })
     }
 
+    handleSubmit(e) {
+        e.preventDefault()
+        this.props.onClickAction(this.state)
+    }
+
     render() {
         const { classes, textFieldValues, onClickAction } = this.props
 
@@ -31,7 +36,7 @@ export class Form extends Component {
                     variant='contained'
                     color='secondary'
                     size='large'
-                    onClick={onClickAction}>
+                    onClick={this.handleSubmit.bind(this)}>
                     Lägg till
                 </Button>
             </form>
