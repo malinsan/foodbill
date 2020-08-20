@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { GET_INGREDIENTS, DELETE_INGREDIENT } from './types'
+import { GET_INGREDIENTS, DELETE_INGREDIENT, ADD_INGREDIENT } from './types'
 
 // GET INGREDIENTS
 export const getIngredients = () => dispatch => {
@@ -26,3 +26,15 @@ export const deleteIngredient = id => dispatch => {
         })
         .catch(err => console.log(err))
 }
+
+// ADD INGREDIENT
+export const addIngredient = ingredient => dispatch => {
+    axios
+        .post('api/ingredients/', ingredient)
+        .then(res => {
+            dispatch({
+                type: ADD_INGREDIENT,
+                payload: res.data
+            })
+        })
+} 
