@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import {
     AppBar,
@@ -11,7 +11,7 @@ import {
     Container
 } from '@material-ui/core'
 import Dashboard from '../ingredients/Dashboard'
-import { Route, Switch, Link } from 'react-router-dom'
+import { Route, Switch, Link, useLocation } from 'react-router-dom'
 import Foodbill from '../foodbill/Foodbill'
 import Recipes from '../recipes/Recipes'
 import Ingredients from '../ingredients/Ingredients'
@@ -43,11 +43,12 @@ const useStyles = makeStyles(theme => ({
 const menuItems = [
     { text: 'Skapa matsedel', path: '/foodbill', component: Foodbill },
     { text: 'Skapa recept', path: '/recipes', component: Recipes },
-    { text: 'Skapa ingredienser', path: '/ingredients', component: Ingredients }
+    { text: 'Skapa ingredienser', path: '/ingredients', component: Dashboard }
 ]
 
 function Layout(props) {
     const classes = useStyles()
+    let location = useLocation()
 
     return (
         <div className={classes.root}>
@@ -61,9 +62,15 @@ function Layout(props) {
             <Drawer className={classes.drawer} variant='permanent'>
                 <Toolbar />
                 <List>
-                    {menuItems.map(item => (
-                        <ListItem button component={Link} to={item.path} key={item.text}>
-                            <ListItemText primary={item.text} />
+                    {menuItems.map(({path, text}) => (
+                        <ListItem 
+                            button
+                            component={Link}
+                            to={path}
+                            key={text}
+                            selected={location.pathname === path}
+                        >
+                            <ListItemText primary={text} />
                         </ListItem>
                     ))}
                 </List>
@@ -74,11 +81,11 @@ function Layout(props) {
                     <Toolbar />
                     <Switch>
                         <Route exact path='/' component={Ingredients} />
-                        {menuItems.map(item => (
+                        {menuItems.map(({path, text, component}) => (
                                 <Route
-                                    path={item.path}
-                                    component={item.component}
-                                    key={item.text}
+                                    path={path}
+                                    component={component}
+                                    key={text}
                                 />
                             )
                         )}
