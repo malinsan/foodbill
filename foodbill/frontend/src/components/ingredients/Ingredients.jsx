@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { getIngredients, deleteIngredient } from '../../actions/ingredients'
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Button } from '@material-ui/core'
 
-export class Ingredients extends Component {
+class Ingredients extends Component {
     static propTypes = {
         ingredients: PropTypes.array.isRequired,
         getIngredients: PropTypes.func.isRequired,

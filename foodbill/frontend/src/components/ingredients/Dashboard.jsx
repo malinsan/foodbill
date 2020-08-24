@@ -1,11 +1,19 @@
 import React from 'react'
 import Ingredients from './Ingredients'
 import AddIngredientForm from './AddIngredientForm'
-import { Container, Grid } from '@material-ui/core'
+import { Container, Grid, makeStyles } from '@material-ui/core'
+
+const useStyles = makeStyles(theme => {
+    content: {
+        flexGrow: 1
+    }
+})
 
 export default function Dashboard() {
+    const classes = useStyles()
+
     return (
-        <Container>
+        <>
             <Grid container spacing={5}>
                 <Grid item xs={12}>
                     <AddIngredientForm />
@@ -14,6 +22,6 @@ export default function Dashboard() {
                     <Ingredients />
                 </Grid>
             </Grid>
-        </Container>
+        </>
     )
 }

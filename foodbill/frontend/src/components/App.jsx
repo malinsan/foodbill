@@ -8,19 +8,16 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { Provider } from 'react-redux'
 import store from '../store'
 import { Grid } from '@material-ui/core'
+import Layout from './layout/Layout'
+import { BrowserRouter } from 'react-router-dom'
 
 class App extends Component {
     render() {
         return (
-            <Provider store={store}> 
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <Header />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Dashboard />
-                    </Grid>
-                </Grid>
+            <Provider store={store}>
+                <BrowserRouter>
+                    <Layout />
+                </BrowserRouter>
             </Provider>
         )
     }
